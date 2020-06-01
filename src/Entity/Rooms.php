@@ -57,17 +57,17 @@ class Rooms
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $type;
+    private $type = 1;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $status;
+    private $status = 1;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $featured;
+    private $featured = 0;
 
     /**
      * @ORM\Column(type="integer", nullable=true)

@@ -19,22 +19,29 @@ class RoomsRepository extends ServiceEntityRepository
         parent::__construct($registry, Rooms::class);
     }
 
-    // /**
-    //  * @return Rooms[] Returns an array of Rooms objects
-    //  */
-    /*
-    public function findByExampleField($value)
+     /**
+      * @return Rooms[] Returns an array of Rooms objects
+      */
+
+    public function getIndex()
     {
         return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
             ->orderBy('r.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
-            ->getResult()
+            ->getArrayResult();
         ;
     }
-    */
+
+    public function findById(int $id)
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.id = :id')
+            ->setParameter('id',$id)
+            ->orderBy('r.id', 'ASC')
+            ->getQuery()
+            ->getArrayResult();
+    }
+
 
     /*
     public function findOneBySomeField($value): ?Rooms
