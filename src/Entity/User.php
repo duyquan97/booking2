@@ -64,12 +64,6 @@ class User implements UserInterface
      */
     private $token;
 
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $expiresAt;
-
-
 
     public function getId(): ?int
     {
@@ -189,20 +183,5 @@ class User implements UserInterface
 
         return $this;
     }
-
-    public function getExpiresAt(): ?\DateTimeInterface
-    {
-        return $this->expiresAt;
-    }
-
-    public function setExpiresAt(?\DateTimeInterface $expiresAt): self
-    {
-        $this->expiresAt = $expiresAt;
-
-        return $this;
-    }
-
-
-
 
 }

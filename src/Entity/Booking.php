@@ -4,9 +4,13 @@ namespace App\Entity;
 
 use App\Repository\BookingRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=BookingRepository::class)
+ * @UniqueEntity("code")
+ *
  */
 class Booking
 {
@@ -19,43 +23,51 @@ class Booking
 
     /**
      * @ORM\ManyToOne(targetEntity=Guests::class)
+     * @Assert\NotBlank
      */
     private $guest;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
+     *
      */
     private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity=Rooms::class)
+     * @Assert\NotBlank
      */
     private $room;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="float")
+     * @Assert\NotBlank
      */
     private $price;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="date")
+     * @Assert\NotBlank
      */
     private $fromDate;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="date")
+     * @Assert\NotBlank
      */
     private $toDate;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer")
+     * @Assert\NotBlank
      */
     private $amount;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer")
+     *
      */
-    private $accept;
+    private $accept = 0;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -66,6 +78,13 @@ class Booking
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     */
+    private $code;
+
 
     public function getId(): ?int
     {
@@ -191,4 +210,17 @@ class Booking
 
         return $this;
     }
+
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    public function setCode(string $code): self
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
 }

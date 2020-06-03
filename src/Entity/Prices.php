@@ -4,9 +4,13 @@ namespace App\Entity;
 
 use App\Repository\PricesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PricesRepository::class)
+ * @UniqueEntity(fields={"fromDate","room"})
+ * @UniqueEntity(fields={"toDate","room"})
  */
 class Prices
 {
@@ -18,22 +22,30 @@ class Prices
     private $id;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="float", nullable=false)
+     * @Assert\NotBlank
      */
     private $price;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="date", nullable=false)
+     * @Assert\NotBlank
+     * @Assert\Date
+     * @var string A "Y-m-d" formatted value
      */
     private $fromDate;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="date", nullable=false)
+     * @Assert\NotBlank
+     * @Assert\Date
+     * @var string A "Y-m-d" formatted value
      */
     private $toDate;
 
     /**
      * @ORM\ManyToOne(targetEntity=Rooms::class)
+     * @Assert\NotBlank
      */
     private $room;
 

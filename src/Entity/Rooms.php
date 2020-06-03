@@ -6,9 +6,12 @@ use App\Repository\RoomsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=RoomsRepository::class)
+ * @UniqueEntity("slug")
  */
 class Rooms
 {
@@ -20,12 +23,15 @@ class Rooms
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=false)
+     * @Assert\NotBlank(message="Name not null")
+     *
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=false)
+     *
      */
     private $slug;
 
@@ -40,39 +46,47 @@ class Rooms
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=false)
+     * @Assert\NotBlank
      */
     private $province;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=false)
+     * @Assert\NotBlank
      */
     private $district;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=false)
+     * @Assert\NotBlank
      */
     private $street;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Positive
+     */
+    private $person;
+
+    /**
+     * @ORM\Column(type="integer", nullable=false)
+     *
      */
     private $type = 1;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer", nullable=false)
      */
     private $status = 1;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer", nullable=false)
      */
     private $featured = 0;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $person;
+
 
 
     public function __construct()
@@ -169,6 +183,18 @@ class Rooms
         return $this;
     }
 
+    public function getPerson(): ?int
+    {
+        return $this->person;
+    }
+
+    public function setPerson(?int $person): self
+    {
+        $this->person = $person;
+
+        return $this;
+    }
+
     public function getType(): ?int
     {
         return $this->type;
@@ -205,16 +231,6 @@ class Rooms
         return $this;
     }
 
-    public function getPerson(): ?int
-    {
-        return $this->person;
-    }
 
-    public function setPerson(?int $person): self
-    {
-        $this->person = $person;
-
-        return $this;
-    }
     
 }

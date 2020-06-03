@@ -84,6 +84,51 @@
     "egulias/email-validator": {
         "version": "2.1.17"
     },
+    "friendsofsymfony/rest-bundle": {
+        "version": "2.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.2",
+            "ref": "cad41ef93d6150067ae2bb3c7fd729492dff6f0a"
+        },
+        "files": [
+            "config/packages/fos_rest.yaml"
+        ]
+    },
+    "illuminate/auth": {
+        "version": "v6.18.18"
+    },
+    "illuminate/console": {
+        "version": "v6.18.18"
+    },
+    "illuminate/container": {
+        "version": "v6.18.18"
+    },
+    "illuminate/contracts": {
+        "version": "v6.18.18"
+    },
+    "illuminate/database": {
+        "version": "v6.18.18"
+    },
+    "illuminate/filesystem": {
+        "version": "v6.18.18"
+    },
+    "illuminate/http": {
+        "version": "v6.18.18"
+    },
+    "illuminate/pipeline": {
+        "version": "v6.18.18"
+    },
+    "illuminate/queue": {
+        "version": "v6.18.18"
+    },
+    "illuminate/session": {
+        "version": "v6.18.18"
+    },
+    "illuminate/support": {
+        "version": "v6.18.18"
+    },
     "laminas/laminas-code": {
         "version": "3.4.1"
     },
@@ -93,8 +138,29 @@
     "laminas/laminas-zendframework-bridge": {
         "version": "1.0.4"
     },
+    "lcobucci/jwt": {
+        "version": "3.3.2"
+    },
+    "lexik/jwt-authentication-bundle": {
+        "version": "2.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.5",
+            "ref": "5b2157bcd5778166a5696e42f552ad36529a07a6"
+        },
+        "files": [
+            "config/packages/lexik_jwt_authentication.yaml"
+        ]
+    },
     "monolog/monolog": {
         "version": "1.25.4"
+    },
+    "namshi/jose": {
+        "version": "7.2.3"
+    },
+    "nesbot/carbon": {
+        "version": "2.35.0"
     },
     "nikic/php-parser": {
         "version": "v4.4.0"
@@ -104,6 +170,9 @@
     },
     "ocramius/proxy-manager": {
         "version": "2.8.0"
+    },
+    "opis/closure": {
+        "version": "3.5.3"
     },
     "php": {
         "version": "7.4"
@@ -128,6 +197,9 @@
     },
     "psr/log": {
         "version": "1.1.3"
+    },
+    "psr/simple-cache": {
+        "version": "1.0.1"
     },
     "sensio/framework-extra-bundle": {
         "version": "5.2",
@@ -509,10 +581,19 @@
     "twig/twig": {
         "version": "v3.0.3"
     },
+    "tymon/jwt-auth": {
+        "version": "1.0.0"
+    },
     "webimpress/safe-writer": {
         "version": "2.0.1"
     },
     "webmozart/assert": {
         "version": "1.8.0"
+    },
+    "willdurand/jsonp-callback-validator": {
+        "version": "v1.1.0"
+    },
+    "willdurand/negotiation": {
+        "version": "v2.3.1"
     }
 }
