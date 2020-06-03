@@ -3,7 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Booking;
+use App\Entity\Guests;
+use App\Entity\Prices;
+use App\Entity\Rooms;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -19,22 +23,22 @@ class BookingRepository extends ServiceEntityRepository
         parent::__construct($registry, Booking::class);
     }
 
-    // /**
-    //  * @return Booking[] Returns an array of Booking objects
-    //  */
-    /*
-    public function findByExampleField($value)
+     /**
+      * @return Booking[] Returns an array of Booking objects
+      */
+
+    public function getListBooking()
     {
         return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
+            ->Join(Rooms::class, 'r', Join::WITH, 'r.id = b.room')
+            ->Join(Guests::class, 'g', Join::WITH, 'g.id = b.guest')
+            ->select('b.id','b.code','b.price','b.fromDate','b.toDate','b.amount','b.accept','r.id as room_id','g.id as guest_id')
             ->orderBy('b.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Booking

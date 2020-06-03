@@ -47,7 +47,7 @@ class BookingController extends AbstractFOSRestController
      */
     public function index(Request $request): View
     {
-        return View::create($this->bookingsRepository->findAll(), Response::HTTP_OK);
+        return View::create($this->bookingsRepository->getListBooking(), Response::HTTP_OK);
     }
 
     /**
