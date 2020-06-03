@@ -30,12 +30,6 @@ class RoomsController extends AbstractFOSRestController
      */
     public function index(Request $request): View
     {
-
-//        dd($request->headers->get('Authorization'));
-        $usermane = "suppor@nencer.net";
-        $pass = "147258Abc";
-        dd(base64_encode($usermane.':'.$pass));
-
         $fromPrice = $request->query->get('fromPrice');
         $toPrice = $request->query->get('toPrice');
         $fromDate = $request->query->get('fromDate');
